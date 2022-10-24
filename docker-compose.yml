@@ -1,0 +1,27 @@
+version: '3.9'
+
+networks:
+  dev_network:
+
+services:
+  db:
+    image: postgres:latest
+    hostname: '127.0.0.1'
+    ports:
+      - '5000:5000'
+    environment:
+      POSTGRES_USER: user_fl
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: flask_db
+
+  app:
+    build:
+      context: .
+    environment:
+      Post_DB: 'postgresql://user:password@localhost:5000/flask_db'
+    ports:
+      - '5000:8000'
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app

@@ -1,0 +1,89 @@
+
+###
+@baseUrl = http://localhost:5123
+
+# просмотр почты
+POST {{baseUrl}}/email-send/2
+content-type: application/json
+
+###
+# просмотр почт
+POST {{baseUrl}}/email-send-all/
+content-type: application/json
+
+###
+# просмотр пользователь
+GET {{baseUrl}}/api/users/2
+content-type: application/json
+
+###
+# регистрация1
+POST {{baseUrl}}/api/login/
+content-type: application/json
+
+{
+  "username": "test1",
+  "email": "test1@mail.ru",
+  "password": "123456"
+}
+
+###
+# регистрация2
+POST {{baseUrl}}/api/login/
+content-type: application/json
+
+{
+  "username": "test2",
+  "email": "test2@gmai.com",
+  "password": "654321"
+}
+
+###
+# просморт всех объявлений
+GET {{baseUrl}}/api/posts/
+content-type: application/json
+
+###
+# просморт одного объявления
+GET {{baseUrl}}/api/posts/3
+content-type: application/json
+
+###
+# добавление объявления 1
+POST {{baseUrl}}/api/posts/
+content-type: application/json
+Authorization: 
+
+{
+  "title": "test1",
+  "content": "advertisement1"
+}
+
+###
+# добавление объявления 2
+POST {{baseUrl}}/api/posts/
+content-type: application/json
+Authorization: 
+
+{
+  "title": "test2",
+  "content": "advertisement2"
+}
+
+###
+# удаление объявления
+DELETE {{baseUrl}}/api/posts/3
+content-type: application/json
+Authorization: 
+
+###
+# обновление объявления
+PUT {{baseUrl}}/api/posts/13
+content-type: application/json
+Authorization: 
+
+{
+  "title": "test2",
+  "content": "advertisement2"
+}
+
